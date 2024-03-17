@@ -210,4 +210,66 @@ CREATE TABLE deductions (
     date DATE NOT NULL,
     FOREIGN KEY (employee_id) REFERENCES employees(employee_id)
 );
+
+
+
+```
+
+#### Tenants
+
+- Add Tenant ID Column and Foreign Key Constraints
+
+```sql
+
+CREATE TABLE tenants (
+    tenant_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    code VARCHAR(50) UNIQUE NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+--- Employees and Departments
+ALTER TABLE employees ADD COLUMN tenant_id INT NOT NULL;
+ALTER TABLE departments ADD COLUMN tenant_id INT NOT NULL;
+
+--- Attendance Records
+ALTER TABLE employees ADD CONSTRAINT fk_employees_tenant_id FOREIGN KEY (tenant_id) REFERENCES tenants(tenant_id);
+ALTER TABLE departments ADD CONSTRAINT fk_departments_tenant_id FOREIGN KEY (tenant_id) REFERENCES tenants(tenant_id);
+
+--- Leave Requests
+ALTER TABLE leave_requests ADD COLUMN tenant_id INT NOT NULL;
+ALTER TABLE leave_requests ADD CONSTRAINT fk_leave_requests_tenant_id FOREIGN KEY (tenant_id) REFERENCES tenants(tenant_id);
+
+--- Payroll Records
+ALTER TABLE payroll_records ADD COLUMN tenant_id INT NOT NULL;
+ALTER TABLE payroll_records ADD CONSTRAINT fk_payroll_records_tenant_id FOREIGN KEY (tenant_id) REFERENCES tenants(tenant_id);
+
+--- Salaries
+ALTER TABLE salaries ADD COLUMN tenant_id INT NOT NULL;
+ALTER TABLE salaries ADD CONSTRAINT fk_salaries_tenant_id FOREIGN KEY (tenant_id) REFERENCES tenants(tenant_id);
+
+--- Bonuses
+ALTER TABLE bonuses ADD COLUMN tenant_id INT NOT NULL;
+ALTER TABLE bonuses ADD CONSTRAINT fk_bonuses_tenant_id FOREIGN KEY (tenant_id) REFERENCES tenants(tenant_id);
+
+--- Deductions
+ALTER TABLE deductions ADD COLUMN tenant_id INT NOT NULL;
+ALTER TABLE deductions ADD CONSTRAINT fk_deductions_tenant_id FOREIGN KEY (tenant_id) REFERENCES tenants(tenant_id);
+
+--- Job Postings
+ALTER TABLE job_postings ADD COLUMN tenant_id INT NOT NULL;
+ALTER TABLE job_postings ADD CONSTRAINT fk_job_postings_tenant_id FOREIGN KEY (tenant_id) REFERENCES tenants(tenant_id);
+
+--- Applications
+ALTER TABLE applications ADD COLUMN tenant_id INT NOT NULL;
+ALTER TABLE applications ADD CONSTRAINT fk_applications_tenant_id FOREIGN KEY (tenant_id) REFERENCES tenants(tenant_id);
+
+--- Courses and Enrollments (for Learning and Development)
+ALTER TABLE courses ADD COLUMN tenant_id INT NOT NULL;
+ALTER TABLE courses ADD CONSTRAINT fk_courses_tenant_id FOREIGN KEY (tenant_id) REFERENCES tenants(tenant_id);
+
+ALTER TABLE enrollments ADD COLUMN tenant_id INT NOT NULL;
+ALTER TABLE enrollments ADD CONSTRAINT fk_enrollments_tenant_id FOREIGN KEY (tenant_id) REFERENCES tenants(tenant_id);
+
+
 ```
