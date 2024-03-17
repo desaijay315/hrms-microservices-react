@@ -5,6 +5,11 @@
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/AuthServiceApplication/pom.xml" />
+        <option value="$USER_HOME$/Downloads/ApiGateway (1)/ApiGateway/pom.xml" />
+        <option value="$USER_HOME$/Downloads/AttendanceTrackingService/AttendanceTrackingService/pom.xml" />
+        <option value="$PROJECT_DIR$/ApiGateway/pom.xml" />
+        <option value="$PROJECT_DIR$/AttendanceTrackingService/pom.xml" />
+        <option value="$USER_HOME$/Downloads/ConfigServer/ConfigServer/pom.xml" />
       </list>
     </option>
   </component>
