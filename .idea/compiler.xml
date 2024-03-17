@@ -19,6 +19,7 @@
       <module name="ApiGateway" options="-parameters" />
       <module name="AttendanceTrackingService" options="-parameters" />
       <module name="AuthServiceApplication" options="-parameters" />
+      <module name="ConfigServer" options="-parameters" />
     </option>
   </component>
 </project>
